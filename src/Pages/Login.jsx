@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
     const {login,googleSignIn}=useContext(AuthContext)
     const navigate=useNavigate()
+    const location=useLocation()
     const handleLoginSubmit=e=>{
         e.preventDefault();
         const email=e.target.email.value;

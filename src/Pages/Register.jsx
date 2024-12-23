@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Register = () => {
-    const {createUser,googleSignIn}=useContext(AuthContext)
+    const {createUser,googleSignIn,manageProfile}=useContext(AuthContext)
     const [errorMessage,setErrorMessage]=useState('')
     const navigate=useNavigate()
     const handleSubmit=e=>{
@@ -25,7 +25,7 @@ const Register = () => {
             console.log(result.user)
             e.target.reset(); 
             // toast.success("Register Succesfully")
-            // manageProfile(name,photo) 
+            manageProfile(name,photo) 
             navigate("/")
         })
         .catch(err=>{
