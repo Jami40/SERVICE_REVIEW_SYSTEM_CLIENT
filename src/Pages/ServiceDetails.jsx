@@ -1,15 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import axios from 'axios';
 
 const ServiceDetails = () => {
     const data=useLoaderData()
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
     const [reviews, setReviews] = useState([]);
-    const {user}=useContext(AuthContext)
+    const {user,setLoading}=useContext(AuthContext)
     const handleSubmitReview=e=>{
         e.preventDefault();
         const newReview = {
@@ -19,10 +20,21 @@ const ServiceDetails = () => {
             user: {
                 name: user.displayName,
                 photo: user.photoURL,
-            }
+            },
+            email:user.email
         };
         console.log(newReview)
+        axios.post('http://localhost:5000/review',newReview)
+        .then(res=>console.log(res.data))
+        .catch(err=>console.log(err))
     }
+    useEffect(()=>{
+        axios.get('http://localhost:5000/review')
+        .then(res=>{
+            setLoading(true)
+            setReviews(res.data)})
+        .catch(err=>console.log(err))
+    },[])
     return (
         <div className="container mx-auto p-4">
             {/* Service Details Section */}
@@ -85,12 +97,12 @@ const ServiceDetails = () => {
                             <div key={index} className="border-b last:border-b-0 pb-4">
                                 <div className="flex items-center gap-4 mb-2">
                                     <img 
-                                        src={review.user.photo} 
-                                        alt={review.user.name}
+                                        src={review.user?.photo} 
+                                        alt={review.user?.name}
                                         className="w-10 h-10 rounded-full"
                                     />
                                     <div>
-                                        <h4 className="font-semibold">{review.user.name}</h4>
+                                        <h4 className="font-semibold">{review.user?.name}</h4>
                                         <p className="text-sm text-gray-500">
                                             {new Date(review.date).toLocaleDateString()}
                                         </p>
