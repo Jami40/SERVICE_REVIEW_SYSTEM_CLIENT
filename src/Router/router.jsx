@@ -9,6 +9,7 @@ import AddServicePage from '../Pages/AddServicePage';
 import ServiceDetails from '../Pages/ServiceDetails';
 import MyService from '../Pages/MyService';
 import MyReview from '../Pages/MyReview';
+import PrivateRouter from '../Provider/PrivateRouter';
 
 const router = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         },
         {
             path:'/details/:id',
-            element:<ServiceDetails></ServiceDetails>,
+            element:<PrivateRouter><ServiceDetails></ServiceDetails></PrivateRouter>,
             loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
         },
         {
@@ -40,16 +41,16 @@ const router = createBrowserRouter([
         },
         {
             path:'/addService',
-            element:<AddServicePage></AddServicePage>
+            element:<PrivateRouter><AddServicePage></AddServicePage></PrivateRouter>
         },
         {
             path:'/myService',
-            element:<MyService></MyService>
+            element:<PrivateRouter><MyService></MyService></PrivateRouter>
 
         },
         {
             path:'/myReview',
-            element:<MyReview></MyReview>
+            element:<PrivateRouter><MyReview></MyReview></PrivateRouter>
         }
       ]
     },

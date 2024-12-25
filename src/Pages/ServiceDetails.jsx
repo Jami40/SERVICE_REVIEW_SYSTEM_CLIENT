@@ -4,6 +4,7 @@ import Rating from 'react-rating';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ServiceDetails = () => {
     const data=useLoaderData()
@@ -26,14 +27,24 @@ const ServiceDetails = () => {
         };
         console.log(newReview)
         axios.post('http://localhost:5000/review',newReview)
-        .then(res=>console.log(res.data))
+        .then(res=>{
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Review added successfully',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            console.log(res.data)
+        })
         .catch(err=>console.log(err))
     }
     useEffect(()=>{
         axios.get('http://localhost:5000/review')
         .then(res=>{
-            setLoading(true)
-            setReviews(res.data)})
+            setReviews(res.data)
+            setLoading(false)
+        })
         .catch(err=>console.log(err))
     },[])
     return (

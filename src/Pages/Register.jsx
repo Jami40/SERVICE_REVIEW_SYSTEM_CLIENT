@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const {createUser,googleSignIn,manageProfile}=useContext(AuthContext)
@@ -24,12 +25,12 @@ const Register = () => {
         .then(result=>{
             console.log(result.user)
             e.target.reset(); 
-            // toast.success("Register Succesfully")
+            toast.success("Register Succesfully")
             manageProfile(name,photo) 
             navigate("/")
         })
         .catch(err=>{
-            // toast.error(err.message)
+            toast.error(err.message)
             console.log(err)
         })
 
@@ -37,13 +38,13 @@ const Register = () => {
     const handleGoogleSign=()=>{
         googleSignIn()
         .then(result=>{
-        //   toast.success("Google signIn success")
+          toast.success("Google signIn success")
           console.log(result.user)
             navigate("/")
         })
         .catch(error=>{
             console.log(error)
-        //   toast.error(error.message)
+          toast.error(error.message)
         })
 
     }

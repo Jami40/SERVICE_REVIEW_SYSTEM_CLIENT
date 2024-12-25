@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const AddServicePage = () => {
     const {user}=useContext(AuthContext)
@@ -20,8 +22,24 @@ const AddServicePage = () => {
         };
         console.log(service)
         axios.post('http://localhost:5000/service',service)
-        .then(res=>console.log(res.data))
-        .catch(err=>console.log(err))
+        .then(res=>{
+            console.log(res.data)
+            if(res.data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Service Added',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+
+            }
+
+        })
+            
+        .catch(err=>{
+          toast.error('Error',err.message)
+        })
+           
 
     }
     return (
