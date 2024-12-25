@@ -24,7 +24,7 @@ const MyReview = () => {
         const form = e.target
         const updatedReview = {
             rating: form.rating.value,
-            reviewText: form.reviewText.value
+            text: form.reviewText.value
         }
 
         axios.put(`http://localhost:5000/review/${selectedReview._id}`, updatedReview)
