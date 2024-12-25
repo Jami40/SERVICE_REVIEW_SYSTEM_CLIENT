@@ -16,6 +16,7 @@ const ServiceDetails = () => {
         const newReview = {
             text: review,
             rating,
+            title:data.title,
             date: new Date().toISOString(),
             user: {
                 name: user.displayName,
