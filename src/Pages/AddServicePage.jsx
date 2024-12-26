@@ -21,7 +21,7 @@ const AddServicePage = () => {
             userEmail: user.email
         };
         console.log(service)
-        axios.post('http://localhost:5000/service',service)
+        axios.post('https://service-review-system-server-flax.vercel.app/service',service)
         .then(res=>{
             console.log(res.data)
             if(res.data.insertedId){
@@ -120,6 +120,9 @@ const AddServicePage = () => {
                         <option value="Home Service">Home Maintenance Services</option>
                         <option value="Cleaning">Cleaning and Sanitization</option>
                         <option value="Renovation">Renovation and Remodeling</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="IT">IT</option>
                         <option value="Daily Life">Lifestyle and Convenience Services</option>
                         <option value="Beauty">Wellness and Beauty</option>
                         <option value="Marketing">Event Management Services</option>

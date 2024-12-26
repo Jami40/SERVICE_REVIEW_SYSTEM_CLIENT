@@ -6,7 +6,7 @@ const HomesCard = () => {
     const [service,setService]=useState([])
     const navigate=useNavigate()
     useEffect(()=>{
-        axios.get('http://localhost:5000/service/home')
+        axios.get('https://service-review-system-server-flax.vercel.app/service/home')
         .then(res=>setService(res.data))
     },[])
     return (

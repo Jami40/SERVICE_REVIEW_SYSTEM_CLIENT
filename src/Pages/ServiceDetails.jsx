@@ -26,7 +26,7 @@ const ServiceDetails = () => {
             email:user.email
         };
         console.log(newReview)
-        axios.post('http://localhost:5000/review',newReview)
+        axios.post('https://service-review-system-server-flax.vercel.app/review',newReview)
         .then(res=>{
             Swal.fire({
                 icon: 'success',
@@ -40,7 +40,7 @@ const ServiceDetails = () => {
         .catch(err=>console.log(err))
     }
     useEffect(()=>{
-        axios.get('http://localhost:5000/review')
+        axios.get('https://service-review-system-server-flax.vercel.app/review')
         .then(res=>{
             setReviews(res.data)
             setLoading(false)

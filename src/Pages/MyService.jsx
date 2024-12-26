@@ -9,7 +9,7 @@ const MyService = () => {
     const [search,setSearch]= useState("")
     const [services,setServices]=useState([])
     useEffect(()=>{
-        axios.get(`http://localhost:5000/service/myFav?email=${user?.email}`,{withCredentials:true})
+        axios.get(`https://service-review-system-server-flax.vercel.app/service/myFav?email=${user?.email}`)
         .then(res=>setServices(res.data))
         .catch(err=>console.log(err))
     },[user])
@@ -32,7 +32,7 @@ const MyService = () => {
             confirmButtonText: "Yes, remove it!",
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/service/${id}`)
+                axios.delete(`https://service-review-system-server-flax.vercel.app/service/${id}`)
                 .then((res) => {
                     if (res.data.deletedCount > 0) {
                     Swal.fire(
@@ -56,7 +56,7 @@ const MyService = () => {
         }
         console.log(updatedService)
         
-        axios.put(`http://localhost:5000/service/${id}`, updatedService)
+        axios.put(`https://service-review-system-server-flax.vercel.app/service/${id}`, updatedService)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     // Update the services state with the new data

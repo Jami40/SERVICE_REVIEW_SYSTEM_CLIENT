@@ -28,7 +28,7 @@ const Register = () => {
             toast.success("Register Succesfully")
             manageProfile(name,photo) 
             const user={email : email}
-            axios.post(`http://localhost:5000/jwt`,user, { withCredentials:true })
+            axios.post(`https://service-review-system-server-flax.vercel.app/jwt`,user, { withCredentials:true })
            .then(res=>{
             console.log(res.data)
           })

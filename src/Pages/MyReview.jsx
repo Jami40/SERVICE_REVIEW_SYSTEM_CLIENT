@@ -11,13 +11,13 @@ const MyReview = () => {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/review/myRev?email=${user?.email}`)
+        axios.get(`https://service-review-system-server-flax.vercel.app/review/myRev?email=${user?.email}`)
         .then(res=>setReviews(res.data))
         .catch(err=>console.log(err))
     },[user])
 
     const fetchReviews = () => {
-        axios.get(`http://localhost:5000/review/myRev?email=${user?.email}`)
+        axios.get(`https://service-review-system-server-flax.vercel.app/review/myRev?email=${user?.email}`)
             .then(res => setReviews(res.data))
             .catch(err => {
                 console.log(err);
@@ -44,7 +44,7 @@ const MyReview = () => {
         //     }
         // });
 
-        axios.put(`http://localhost:5000/review/${selectedReview._id}`, updatedReview)
+        axios.put(`https://service-review-system-server-flax.vercel.app/review/${selectedReview._id}`, updatedReview)
             .then(() => {
                 fetchReviews();
                 setIsUpdateModalOpen(false);
@@ -85,7 +85,7 @@ const MyReview = () => {
                     }
                 });
 
-                axios.delete(`http://localhost:5000/review/${selectedReview._id}`,{withCredentials:true})
+                axios.delete(`https://service-review-system-server-flax.vercel.app/review/${selectedReview._id}`,)
                     .then(() => {
                         fetchReviews();
                         setIsDeleteModalOpen(false);

@@ -10,11 +10,13 @@ import ServiceDetails from '../Pages/ServiceDetails';
 import MyService from '../Pages/MyService';
 import MyReview from '../Pages/MyReview';
 import PrivateRouter from '../Provider/PrivateRouter';
+import Error from '../Layout/Error';
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement:<Error></Error>,
       children:[
         {
             path:"/",
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
         {
             path:'/details/:id',
             element:<PrivateRouter><ServiceDetails></ServiceDetails></PrivateRouter>,
-            loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
+            loader:({params})=>fetch(`https://service-review-system-server-flax.vercel.app/service/${params.id}`)
         },
         {
             path:"/login",
