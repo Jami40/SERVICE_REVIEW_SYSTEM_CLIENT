@@ -85,7 +85,7 @@ const MyReview = () => {
                     }
                 });
 
-                axios.delete(`http://localhost:5000/review/${selectedReview._id}`)
+                axios.delete(`http://localhost:5000/review/${selectedReview._id}`,{withCredentials:true})
                     .then(() => {
                         fetchReviews();
                         setIsDeleteModalOpen(false);

@@ -9,7 +9,7 @@ const MyService = () => {
     const [search,setSearch]= useState("")
     const [services,setServices]=useState([])
     useEffect(()=>{
-        axios.get(`http://localhost:5000/service/myFav?email=${user?.email}`)
+        axios.get(`http://localhost:5000/service/myFav?email=${user?.email}`,{withCredentials:true})
         .then(res=>setServices(res.data))
         .catch(err=>console.log(err))
     },[user])

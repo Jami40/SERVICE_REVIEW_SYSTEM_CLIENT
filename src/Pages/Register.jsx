@@ -27,6 +27,11 @@ const Register = () => {
             e.target.reset(); 
             toast.success("Register Succesfully")
             manageProfile(name,photo) 
+            const user={email : email}
+            axios.post(`http://localhost:5000/jwt`,user, { withCredentials:true })
+           .then(res=>{
+            console.log(res.data)
+          })
             navigate("/")
         })
         .catch(err=>{

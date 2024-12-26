@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Login = () => {
     const {login,googleSignIn}=useContext(AuthContext)
@@ -18,6 +19,11 @@ const Login = () => {
             e.target.reset();
             navigate(location?.state ? location.state:"/")
             toast.success("Login succesFully");
+            const user={email : email}
+            axios.post(`http://localhost:5000/jwt`,user, { withCredentials:true })
+           .then(res=>{
+            console.log(res.data)
+          })
 
         })
         .catch(error=>{
