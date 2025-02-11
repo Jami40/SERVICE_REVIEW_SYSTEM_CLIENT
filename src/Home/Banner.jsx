@@ -3,15 +3,15 @@ import "../Home/Banner.css"
 
 const Banner = () => {
     return (
-        <div className='py-10'>
+        <div className='pt-16'>
       <div className="carousel w-full min-h-screen">
         {/* item1 */}
         <div id="slide1" className=" carousel-item relative w-full item1-bg">
           <div className="flex md:flex-row flex-col justify-between py-10 w-4/5 mx-auto items-center md:gap-0 gap-4">
             <div className="space-y-4 text-center md:text-start">
               <p className="text-white text-xl md:text-2xl lg:text-5xl font-medium">
-                <h2 className=''>Drive the Future Today!</h2>
-                <p className='text-xl pt-4'>Experience the thrill of innovation with our range of electric vehicles.</p>
+                <h2 className=''>Your Home, Our Priority.</h2>
+                <p className='text-xl pt-4'>From plumbing to painting, we've got you covered! Reliable, professional, and affordable home services to keep your house running smoothly.</p>
               </p>
               {/* <div>
                 {user && user?.email ? (
@@ -88,8 +88,8 @@ const Banner = () => {
           <div className="flex md:flex-row flex-col justify-between py-10 w-4/5 mx-auto items-center md:gap-0 gap-4">
             <div className="space-y-4 text-center md:text-start">
             <p className="text-white text-xl md:text-2xl lg:text-5xl font-medium">
-                <h2 className=''>Your Home, Our Priority.</h2>
-                <p className='text-xl pt-4'>From plumbing to painting, we've got you covered! Reliable, professional, and affordable home services to keep your house running smoothly.</p>
+            <h2 className=''>Drive the Future Today!</h2>
+            <p className='text-xl pt-4'>Experience the thrill of innovation with our range of electric vehicles.</p>
               </p>
               {/* <div>
                 {user && user?.email ? (

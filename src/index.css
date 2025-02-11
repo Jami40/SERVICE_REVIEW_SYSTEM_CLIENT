@@ -4,6 +4,186 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  font-family: "Lexend", serif;
+:root {
+  /* Elegant dark theme with teal and gold accents */
+  --primary: #00D4FF;     /* Bright cyan - primary actions */
+  --secondary: #14B8A6;   /* Teal - secondary elements */
+  --accent: #FFD700;      /* Gold - highlights and accents */
+  --text: #FFFFFF;        /* Pure white - main text */
+  --text-secondary: #94A3B8; /* Blue-gray - secondary text */
+  --background: #111827;   /* Dark blue-gray - main background */
+  --background-secondary: #1F2937; /* Lighter blue-gray - cards/sections */
+  --success: #22C55E;     /* Emerald - success states */
+  --warning: #FBBF24;     /* Yellow - warning states */
+  --error: #FF4444;       /* Bright red - error states */
+  --surface: #374151;     /* Mid blue-gray - alternative background */
+  --border: #4B5563;      /* Border color */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Lexend', sans-serif;
+}
+
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Style buttons */
+button, 
+.btn {
+  background-color: var(--primary);
+  color: var(--background);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 212, 255, 0.2);
+}
+
+button:hover,
+.btn:hover {
+  background-color: var(--secondary);
+  color: var(--text);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 212, 255, 0.3);
+}
+
+button:active,
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 212, 255, 0.2);
+}
+
+/* Style links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent);
+  transform: scaleX(1);
+  transition: transform 0.3s ease;
+}
+
+/* Style cards or sections */
+.card,
+section {
+  background-color: var(--background-secondary);
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+             0 1px 3px rgba(0, 212, 255, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2),
+             0 2px 4px rgba(0, 212, 255, 0.2);
+  border-color: var(--primary);
+}
+
+/* Navbar specific styles */
+.navbar {
+  background-color: var(--background-secondary);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar .btn-ghost {
+  color: var(--text);
+}
+
+.navbar .btn-ghost:hover {
+  background-color: var(--surface);
+}
+
+/* Toast container custom styling */
+.Toastify__toast {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 6px rgba(0, 212, 255, 0.1) !important;
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid var(--success) !important;
+}
+
+.Toastify__toast--warning {
+  border-left: 4px solid var(--warning) !important;
+}
+
+.Toastify__toast--error {
+  border-left: 4px solid var(--error) !important;
+}
+
+.Toastify__progress-bar {
+  background: linear-gradient(to right, var(--primary), var(--secondary)) !important;
+}
+
+/* Menu styles */
+.menu {
+  background-color: var(--background-secondary);
+}
+
+.menu li a {
+  color: var(--text);
+}
+
+.menu li a:hover {
+  background-color: var(--surface);
+  color: var(--accent);
+}
+
+.menu li a.active {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+/* Additional utility classes */
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.border-color {
+  border-color: var(--border);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
 }

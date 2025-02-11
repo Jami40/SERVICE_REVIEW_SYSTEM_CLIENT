@@ -7,15 +7,15 @@ const Root = () => {
     return (
 
         <div>
-            <div className='bg-[#E3F2D6] lg:px-12 py-2'>
+            <div className=''>
             <Navbar></Navbar>
             </div>
-            <div className='bg-[#272E39]'>
+            <div className=''>
             
             <Outlet></Outlet>
             
         </div>
-        <div>
+        <div className=''>
             <Footer></Footer>
         </div>
         </div>
