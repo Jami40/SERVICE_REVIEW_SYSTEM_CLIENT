@@ -85,107 +85,138 @@ const MyService = () => {
     }
 
     return (
-        <div className='bg-[#f8f9fa] py-10'>
-            <div className='w-11/12 mx-auto mt-14'>
-                <div className='flex justify-between items-center'>
-                    <h2 className="text-3xl pl-4 pb-5 text-[#1A5D1A] font-bold">My Services: {services.length}</h2>
-                    <div className="py-5 w-4/5 md:w-2/5 flex pr-6">
-                        <input
-                            type="text"
-                            name="search"
-                            onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search service"
-                            className="w-full text-black rounded-xl bg-white border-2 border-[#1A5D1A] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#1A5D1A] focus:border-transparent"
-                        />
+        <div className='min-h-screen mt-10 bg-gradient-to-b from-slate-50 to-slate-100 py-12'>
+            <div className='container mx-auto px-4 max-w-7xl'>
+                <div className='bg-white rounded-2xl shadow-xl p-6'>
+                    <div className='flex flex-col md:flex-row justify-between items-center mb-8'>
+                        <h2 className="text-4xl font-bold text-slate-800 mb-4 md:mb-0">
+                            My Services 
+                            <span className="ml-2 text-blue-600 bg-blue-50 px-3 py-1 rounded-full text-2xl">
+                                {services.length}
+                            </span>
+                        </h2>
+                        <div className="w-full md:w-2/5">
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="search"
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    placeholder="Search by title or company..."
+                                    className="w-full text-black rounded-xl bg-slate-50 border-2 border-blue-200 px-4 py-3 pl-12 
+                                    focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-200 transition-all"
+                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="overflow-x-auto rounded-lg shadow-lg">
-                    <table className="table bg-white">
-                        <thead className="bg-[#1A5D1A]">
-                            <tr>
-                                <th className="text-white">
-                                    <label>
-                                        <input type="checkbox" className="checkbox checkbox-success border-white" />
-                                    </label>
-                                </th>
-                                <th className="text-white font-bold">Name</th>
-                                <th className="text-white font-bold">Title</th>
-                                <th className="text-white font-bold">Price</th>
-                                <th className="text-white font-bold">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredServices.map(service => <tr key={service._id} className="hover:bg-[#E8F3E8]">
-                                <th>
-                                    <label>
-                                        <input type="checkbox" className="checkbox checkbox-success" />
-                                    </label>
-                                </th>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle h-12 w-12">
-                                                <img
-                                                    src={user?.photoURL}
-                                                    alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                                        <div className='text-black'>
-                                            <div className="font-bold">{user?.displayName}</div>
-                                            <div className="text-sm opacity-50">{user?.email}</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h2 className='font-semibold text-[#1A5D1A]'>{service.title}</h2>
-                                    <p className="badge bg-[#E8F3E8] text-[#1A5D1A] badge-sm pl-0">{service.companyName}</p>
-                                </td>
-                                <td className="font-medium text-gray-700">{service.price}</td>
-                                <td className="flex gap-2">
-                                    <button 
-                                        onClick={() => document.getElementById(`update_modal_${service._id}`).showModal()}
-                                        className="btn btn-sm bg-[#1A5D1A] hover:bg-[#164B16] text-white border-none"
-                                    >
-                                        Update
-                                    </button>
-                                    <button 
-                                        onClick={() => handleDelete(service._id)}
-                                        className="btn btn-sm bg-[#D64045] hover:bg-[#C13238] text-white border-none"
-                                    >
-                                        Delete
-                                    </button>
 
-                                    {/* Update Modal */}
-                                    <dialog id={`update_modal_${service._id}`} className="modal">
-                                        <div className="modal-box bg-white border-2 border-[#1A5D1A]">
-                                            <h3 className="font-bold text-lg text-[#1A5D1A]">Update Service</h3>
-                                            <form onSubmit={(e) => handleUpdate(e, service._id)} method="dialog">
-                                                <input name='title'
-                                                    type="text" 
-                                                    defaultValue={service.title}
-                                                    className="input input-bordered bg-white focus:border-[#1A5D1A] focus:ring-2 focus:ring-[#1A5D1A] w-full mt-4"
-                                                />
-                                                <input name='companyName'
-                                                    type="text" 
-                                                    defaultValue={service.companyName}
-                                                    className="input input-bordered bg-white focus:border-[#1A5D1A] focus:ring-2 focus:ring-[#1A5D1A] w-full mt-4"
-                                                />
-                                                <input name='price'
-                                                    type="number" 
-                                                    defaultValue={service.price}
-                                                    className="input input-bordered bg-white focus:border-[#1A5D1A] focus:ring-2 focus:ring-[#1A5D1A] w-full mt-4"
-                                                />
-                                                <div className="modal-action">
-                                                    <button className="btn border-[#1A5D1A] hover:bg-[#E8F3E8] text-[#1A5D1A]">Close</button>
-                                                    <button type="submit" className="btn bg-[#1A5D1A] hover:bg-[#164B16] text-white border-none">Save</button>
+                    <div className="overflow-x-auto rounded-xl shadow-sm border border-slate-200">
+                        <table className="table">
+                            <thead className="bg-slate-50">
+                                <tr>
+                                    <th className="px-6 py-4">
+                                        <label>
+                                            <input type="checkbox" className="checkbox checkbox-primary" />
+                                        </label>
+                                    </th>
+                                    <th className="px-6 py-4 text-slate-700">User</th>
+                                    <th className="px-6 py-4 text-slate-700">Service Details</th>
+                                    <th className="px-6 py-4 text-slate-700">Price</th>
+                                    <th className="px-6 py-4 text-slate-700">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-200">
+                                {filteredServices.map(service => (
+                                    <tr key={service._id} className="hover:bg-slate-50 transition-colors">
+                                        <th className="px-6 py-4">
+                                            <label>
+                                                <input type="checkbox" className="checkbox checkbox-primary" />
+                                            </label>
+                                        </th>
+                                        <td className="px-6 py-4">
+                                            <div className="flex items-center gap-4">
+                                                <div className="avatar">
+                                                    <div className="w-12 h-12 rounded-full ring-2 ring-blue-500 ring-offset-2">
+                                                        <img src={user?.photoURL} alt="User" />
+                                                    </div>
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </dialog>
-                                </td>
-                            </tr>)}
-                        </tbody>
-                    </table>
+                                                <div>
+                                                    <div className="font-semibold text-slate-800">{user?.displayName}</div>
+                                                    <div className="text-sm text-slate-500">{user?.email}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            <h2 className='font-semibold text-slate-800'>{service.title}</h2>
+                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600">
+                                                {service.companyName}
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 font-medium text-slate-800">${service.price}</td>
+                                        <td className="px-6 py-4">
+                                            <div className="flex gap-2">
+                                                <button 
+                                                    onClick={() => document.getElementById(`update_modal_${service._id}`).showModal()}
+                                                    className="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white border-none"
+                                                >
+                                                    Update
+                                                </button>
+                                                <button 
+                                                    onClick={() => handleDelete(service._id)}
+                                                    className="btn btn-sm bg-rose-500 hover:bg-rose-600 text-white border-none"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+
+                                            {/* Update Modal */}
+                                            <dialog id={`update_modal_${service._id}`} className="modal">
+                                                <div className="modal-box max-w-lg bg-white">
+                                                    <h3 className="text-2xl font-bold text-slate-800 mb-6">Update Service</h3>
+                                                    <form onSubmit={(e) => handleUpdate(e, service._id)} method="dialog" className="space-y-4">
+                                                        <div>
+                                                            <label className="text-sm font-medium text-slate-700">Title</label>
+                                                            <input name='title'
+                                                                type="text" 
+                                                                defaultValue={service.title}
+                                                                className="input input-bordered w-full text-black mt-1 focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <label className="text-sm font-medium text-slate-700">Company Name</label>
+                                                            <input name='companyName'
+                                                                type="text" 
+                                                                defaultValue={service.companyName}
+                                                                className="input input-bordered w-full text-black mt-1 focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <label className="text-sm font-medium text-slate-700">Price</label>
+                                                            <input name='price'
+                                                                type="number" 
+                                                                defaultValue={service.price}
+                                                                className="input input-bordered w-full text-black mt-1 focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                                                            />
+                                                        </div>
+                                                        <div className="modal-action pt-4 border-t border-slate-200">
+                                                            <button className="btn btn-outline border-slate-300 hover:bg-slate-100 hover:border-slate-300">
+                                                                Cancel
+                                                            </button>
+                                                            <button type="submit" className="btn bg-blue-500 hover:bg-blue-600 text-white border-none">
+                                                                Save Changes
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </dialog>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
