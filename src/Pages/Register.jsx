@@ -55,7 +55,7 @@ const Register = () => {
     }
     return (
         <div>
-      <div className="bg-base-200 min-h-screen flex flex-col justify-center items-center">
+      <div className="bg-base-200 mt-16 min-h-screen flex flex-col justify-center items-center">
       <div className="card my-7 bg-base-100 w-full max-w-lg shrink-0 rounded-none p-8">
       <form onSubmit={handleSubmit} className="card-body">
           <h2 className="text-2xl font-semibold text-center mb-5">Register your account</h2>
@@ -75,13 +75,13 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" name="email" placeholder="Enter your email" className="input input-bordered" required />
+          <input type="email" name="email" placeholder="Enter your email" className="input text-black input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" name="password" placeholder="Enter your password" className="input input-bordered" required />
+          <input type="password" name="password" placeholder="Enter your password" className="input text-black input-bordered" required />
         </div>
         <div className="flex gap-2 items-center">
         <div className="form-control">

@@ -115,7 +115,7 @@ const MyReview = () => {
         <div className="flex flex-col gap-4">
             {reviews.map((review) => (
                 <div key={review._id} className="bg-gray-800 rounded-lg p-6 text-white">
-                    <h3 className="text-xl font-semibold mb-2">{review.serviceTitle}</h3>
+                    <h3 className="text-xl text-white font-semibold mb-2">{review?.title}</h3>
                     <div className="flex items-center mb-3">
                         <span className="text-yellow-400 mr-2">Rating: {review.rating}/5</span>
                         {[...Array(5)].map((_, index) => (
