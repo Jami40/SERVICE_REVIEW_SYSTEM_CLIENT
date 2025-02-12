@@ -28,8 +28,8 @@ const Navbar = () => {
         }
     </>
     return (
-        <div className="fixed top-0 left-0 right-0 z-50">
-            <div className="navbar lg:px-12 bg-[#1F2937] backdrop-blur-lg rounded-xl border-b border-[#4B5563]">
+        <div className="fixed  top-0 left-0 right-0 z-50">
+            <div className="navbar lg:px-12 bg-[#1F2937] backdrop-blur-lg  border-b border-[#4B5563]">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -114,20 +114,20 @@ const Service = () => {
                                  focus:outline-none focus:border-primary transition-all duration-300
                                  hover:bg-white/20 backdrop-blur-sm"
                     >
-                        <option value="all">All Categories</option>
-                        <option value="Food">Food</option>
-                        <option value="Transport">Transport</option>
-                        <option value="IT">IT</option>
-                        <option value="Home Service">Home Maintenance Services</option>
-                        <option value="Cleaning">Cleaning and Sanitization</option>
-                        <option value="Renovation">Renovation and Remodeling</option>
-                        <option value="Daily Life">Lifestyle and Convenience Services</option>
-                        <option value="Beauty">Wellness and Beauty</option>
-                        <option value="Marketing">Event Management Services</option>
-                        <option value="Security">Security and Surveillance</option>
-                        <option value="IT Service">Technical Support Services</option>
-                        <option value="Child and Elder">Childcare and Elderly Care</option>
-                        <option value="Economical">Gardening and Landscaping</option>
+                        <option value="all" className="bg-neutral-800 text-white">All Categories</option>
+                        <option value="Food" className="bg-neutral-800 text-white">Food</option>
+                        <option value="Transport" className="bg-neutral-800 text-white">Transport</option>
+                        <option value="IT" className="bg-neutral-800 text-white">IT</option>
+                        <option value="Home Service" className="bg-neutral-800 text-white">Home Maintenance Services</option>
+                        <option value="Cleaning" className="bg-neutral-800 text-white">Cleaning and Sanitization</option>
+                        <option value="Renovation" className="bg-neutral-800 text-white">Renovation and Remodeling</option>
+                        <option value="Daily Life" className="bg-neutral-800 text-white">Lifestyle and Convenience Services</option>
+                        <option value="Beauty" className="bg-neutral-800 text-white">Wellness and Beauty</option>
+                        <option value="Marketing" className="bg-neutral-800 text-white">Event Management Services</option>
+                        <option value="Security" className="bg-neutral-800 text-white">Security and Surveillance</option>
+                        <option value="IT Service" className="bg-neutral-800 text-white">Technical Support Services</option>
+                        <option value="Child and Elder" className="bg-neutral-800 text-white">Childcare and Elderly Care</option>
+                        <option value="Economical" className="bg-neutral-800 text-white">Gardening and Landscaping</option>
                     </select>
                 </motion.div>
 
